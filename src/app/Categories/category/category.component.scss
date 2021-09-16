@@ -1,0 +1,27 @@
+category {
+    width: 100%;
+}
+
+form {
+    display: flex;
+}
+
+.content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item {
+    margin: 10px;
+    min-width: 100px;
+    flex: 1;
+    text-align: center;
+}
+
+.item input {
+    min-width: fit-content;
+    overflow: hidden;
+    margin: 10px;
+}

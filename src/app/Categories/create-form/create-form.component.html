@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="form">
+        <form #f="ngForm" (ngSubmit)="create(f.value)">
+            <div class="form-group">
+                <label for="name">Category Name</label>
+                <input type="text" name="cat_name" class="form-control" ngModel>
+            </div>
+            <div class="form-group">
+                <label for="consumable">Consumable</label>
+                <input type="checkbox" name="consumable" ngModel>
+            </div>
+            <div class="form-group">
+                <label for="image_url">Image Url</label>
+                <input type="text" class="form-control" name="image_url" ngModel #imgUrl>
+            </div>
+            <button class="btn btn-primary">Save</button>
+        </form>
+        
+    </div>
+    <div class="img">
+        <img [src]="imgUrl.value" width="270px" height="480px">
+    </div>    
+</div>
+

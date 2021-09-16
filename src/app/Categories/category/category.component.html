@@ -1,0 +1,27 @@
+<form #cat="ngForm" (ngSubmit)="update(cat.value)">
+<div class="content">
+        <div class="item serial"><p class="serial_number">{{ category.id }}</p></div>
+        <div class="item image">
+            <img height="100px" width="100px" [src]="category.image_url" alt="">
+            <input [(ngModel)]="category.image_url" #imgUrl *ngIf='editing' type="text" name="image_url" class="form-control" value="https://th.bing.com/th/id/OIP.QopMfwS3G-xJxta6TeInzAHaF3?pid=Api&rs=1">
+        </div>
+        <div class="item name">
+            <p class="cat_name" *ngIf="editing == false; else field" >{{ category.cat_name }}</p>
+            <ng-template #field>
+                <input [(ngModel)]="category.cat_name" type="text" name="cat_name" value="{{category.cat_name}}" class="form-control">
+            </ng-template>
+            
+        </div>
+        <div class="item consumable" *ngIf="editing">
+            <label for="consumable">Consumable</label>
+            <input [(ngModel)]="category.consumable" type="checkbox" name="consumable">
+        </div>
+
+    <div class="item edit">
+        <button class="btn" type="button" *ngIf="!editing" (click)="edit()"><i class="fas fa-pencil-alt"></i></button>
+        <button class="btn" type="button" *ngIf="editing" (click)="update(cat.value)"><i class="far fa-check-circle"></i></button>
+        <button class="btn" type="button" *ngIf="!editing" (click)="delete()"><i class="fas fa-trash-alt"></i></button>
+    </div>
+</div>
+
+</form>

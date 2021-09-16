@@ -1,0 +1,23 @@
+<div class="container">
+    
+</div>
+
+<div class="">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of items; index as i">
+                <invoice-item  [item]='item' [index]='i' (itemRemove)="removeItem($event)"></invoice-item>
+            </tr>
+        </tbody>
+        <tfoot>
+            <div class="add-item">
+                <button class="btn btn-secondary" (click)="addItem()">Add Item</button>
+                <button class="btn btn-primary" (click)="pushItems()">Push Items</button>    
+            </div>
+        </tfoot>
+    </table>
+</div>

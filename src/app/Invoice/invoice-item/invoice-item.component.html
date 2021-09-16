@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="form-group col-1 number">
+        <p class="lead justify-content-center align-items-center">{{ index + 1 }}</p>
+    </div>
+    
+    <div class="form-group col-2">
+        <label for="category">Category</label>
+        <select class="form-control" #sub_category (change)="getProducts()" [(ngModel)]="sub_category_id">
+            <option *ngFor="let sub of sub_categories" value="{{ sub.id }}">{{ sub.name }}</option>    
+        </select>
+    </div>
+    <div class="form-group col-2">
+        <label for="category">Product</label>
+        <select class="form-control" [(ngModel)]="item.products_id">
+            <option *ngFor="let product of products" value="{{ product.id }}">{{product.brand.name + "  " +  product.model }}</option>
+        </select>
+    </div>
+    
+    <div class="form-group col-3">
+        <label for="rate">Rate</label>
+        <input type="text" [(ngModel)]="item.rate" name="rate" class="form-control">
+    </div>
+    <div class="form-group col-3">
+        <label for="quantity">Quantity</label>
+        <input type="text" [(ngModel)]="item.quantity" name="quantity" class="form-control">
+    </div>
+    <button class="btn" (click)="emit()"><i class="fas fa-trash-alt"></i></button>
+</div>
+
+
+
+
+            
+                <!-- <td class="text-center">1</td>
+                <td></td>
+                <td><select class="form-control"><optgroup label="This is a group"><option value="12" selected>This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></td>
+                <td><input type="text" class="form-control" /></td>
+                <td><input type="number" class="form-control" /></td>
+                <td class="text-center"></td> -->
+            
+        

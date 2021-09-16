@@ -1,0 +1,50 @@
+<h4>Product</h4>
+
+<div class="content">
+    <div class="form col-4">
+        <div class="form-group">
+            <label for="brand_id">Brand</label>
+            <select name="brand_id" class="form-control">
+                <option *ngFor='let brand of brands' value="brand.id" [selected]="brand.name == product.brand.name ? 'selected' : ''">{{brand.name}}</option>
+                
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="sub_category_id">Sub Category</label>
+            <select name="sub_category_id" class="form-control">
+                <option *ngFor='let subcat of sub_categories' value="subcat.id" [selected]="subcat.name == product.sub_category.name ? 'selected' : ''">{{ subcat.name }}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="model">Model</label>
+            <input type="text" name="model" class="form-control" [(ngModel)]="product.model">
+        </div>
+        <div class="form-group">
+            <label for="image_url">Image URL</label>
+            <input type="text" name="image_url" class="form-control" [(ngModel)]="product.image_url">
+        </div>
+    </div>
+    <div class="img">
+        <img [src]="product.image_url" alt="">
+    </div>
+</div>
+
+<h4>Consumables</h4>
+
+<div class="consumables">
+    <div class="current col-3">
+        <ul class="list-group">
+            <li *ngFor='let consumable of product.consumables' class="list-group-item" (click)="onClickCurrentConsumable(consumable)">{{ consumable.name }}</li>
+        </ul>
+    </div>
+    <div class="actions col-2">
+        <div class="left"><i class="fas fa-arrow-left"></i></div>
+        <div class="right"><i class="fas fa-arrow-right"></i></div>
+    </div>
+    <div class="available col-3">
+        <ul class="list-group" style="height: 200px; overflow: scroll;">
+            <li class="list-group-item" [class.active]='availableConsumable===selected' *ngFor="let availableConsumable of all_consumables" (click)="onClickAvailableConsumable(availableConsumable)">{{ availableConsumable.name }}</li>
+        </ul>
+    </div>
+    
+</div>

@@ -1,0 +1,30 @@
+<div class="col-10">
+    <p class="lead">Invoices</p>
+    <div class="new">
+        <button routerLink="/invoices/create" class="btn btn-primary">Add</button>
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <th>S.no.</th>
+            <th>Invoice Number</th>
+            <th>Invoice Date</th>
+            <th>Supplier</th>
+            <th>Total</th>
+            <th>Quantity</th>
+            <th>Status</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let invoice of invoices; index as index" routerLink="/invoices/{{invoice.id}}">
+                    <td>{{ index + 1 }}</td>
+                    <td>{{ invoice.invoice_number }}</td>
+                    <td>{{ invoice.invoice_date }}</td>
+                    <td>{{ invoice.supplier_id }}</td>
+                    <td>{{ invoice.total }}</td>
+                    <td>{{ invoice.quantity }}</td>
+                    <td>
+                        <button *ngIf='!invoice.processed' class="btn btn-primary" routerLink="{{invoice.id + '/process'}}">Add</button>
+                    </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

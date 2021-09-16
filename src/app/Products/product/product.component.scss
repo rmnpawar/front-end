@@ -1,0 +1,37 @@
+.content {
+    display: flex;
+    justify-content: flex-start;
+    
+}
+
+.img {
+    margin: 0px 50px;
+    
+    img {
+        height: 340px;
+        width: 450px;
+    }
+}
+
+.features ul {
+    list-style-type: none;
+    color: #0f0f0f;
+    font-size: 11px;
+}
+
+.brand {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.consumables span {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.edit {
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

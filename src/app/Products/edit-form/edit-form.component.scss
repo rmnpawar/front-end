@@ -1,0 +1,26 @@
+.content {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.img {
+    margin: 0px 50px;
+    
+    img {
+        height: 340px;
+        width: 450px;
+    }
+}
+
+.consumables {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

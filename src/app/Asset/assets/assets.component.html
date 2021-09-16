@@ -1,0 +1,8 @@
+<div class="container">
+    <div *ngFor="let asset of assets">
+        <div>
+            <h5>{{asset.asset_id}}</h5>
+            <product [product]="asset.products"></product>
+        </div>
+    </div>
+</div>

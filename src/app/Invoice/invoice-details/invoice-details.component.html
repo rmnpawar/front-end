@@ -1,0 +1,60 @@
+<div class="container">
+    <table class="table table-bordered">
+        <thead>
+            <th>S.No.</th>
+            <th>Item Category</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th></th>
+        </thead>
+        <tbody>
+            <tr *ngFor='let item of invoice?.items; index as i'>
+                <td>{{ i + 1 }}</td>
+                <td>{{ item.products.brand.name + "  " + item.products?.sub_category.name + "  " + item.products?.model }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.rate }}</td>
+                <td >
+                    <button *ngIf='!item.received; else elseblock' class="btn btn-warning" (click)="showDialog(item)">Receive</button>
+                    <ng-template #elseblock>
+                        <p>Already received</p>
+                    </ng-template>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="test" *ngIf="showModal" (click)="close()">
+    <div class="content" (click)="doNothing($event)">
+        <div class="title">
+            <h4>Item Details</h4>
+        </div>
+        <div class="form" *ngIf='!currentItem.products.is_consumable; else consumable'>
+            <table class="table table-bordered">
+                <thead>
+                    <th>S.No.</th>
+                    <th>Product Serial Number</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let i of range(currentItem.quantity);'>
+                        <td>{{ i + 1 }}</td>
+                        <td><input type="text" class="form-control" /></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <div class="save">
+                        <button class="btn btn-primary float-right" (click)="receiveItems()">Save</button>
+                    </div>
+                </tfoot>
+            </table>
+        </div>
+        <ng-template #consumable>
+            <p class="lead">Are you sure?</p>
+            <div class="buttons">
+                <button class="btn btn-primary">Yes</button>
+                <button class="btn btn-danger">No</button>
+            </div>
+        </ng-template>
+        
+    </div>
+</div>

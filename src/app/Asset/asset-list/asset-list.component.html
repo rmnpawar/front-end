@@ -1,0 +1,25 @@
+<div class="container mt-4">
+    <table class="table">
+        <thead>
+            <th>Asset Number</th>
+            <th>Serial Number</th>
+            <th>Product Name</th>
+            <th>Consumables</th>
+            <th>Currently with</th>
+            <th>Last Entry</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let asset of assets">
+                <td>{{ asset.asset_id }}</td>
+                <td>{{ asset.serial_no }}</td>
+                <td>{{ asset.product_name }}</td>
+                <td>{{ asset.consumables }}</td>
+                <td *ngIf="asset.user_name; else inStock">{{ asset.user_name + " " + asset.section_name }}</td>
+                <ng-template #inStock>
+                    <td>In Stock</td>
+                </ng-template>
+                <td>{{ asset.last_updated }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

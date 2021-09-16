@@ -1,0 +1,48 @@
+<div class="container">
+    <p class="lead">Sections</p>
+    <input #section_name type="text" name="section_name" class="form-control col-4 mb-2" placeholder="Create a new section">
+    <button type="button" (click)="createSection(section_name.value)" class="btn btn-primary mb-2">Create</button>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <th>S.no.</th>
+            <th>Name</th>
+            <th>Options</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let section of sections;">
+                <td>{{ section.id }}</td>
+                <td>{{ section.section_name }}</td>
+                <td class="options">
+                    <button class="btn" type="button" (click)="openDialog(section)">
+                        <i class="fas fa-pencil-alt"></i>
+                    </button>
+                    <button class="btn" type="button" (click)="deleteSection(section.id)">
+                        <span><i class="fas fa-trash-alt"></i></span>   
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="test" *ngIf="showDialog" (click)="close()">
+    <div class="content" (click)="doNothing($event)">
+        <div class="title">
+            <h4>Update Details</h4>
+        </div>
+        <div class="form">
+            <div class="form-group">
+                <label for="section_name">Section name</label>
+                <input type="text" [(ngModel)]="currSection.section_name" name="section_name" class="form-control">
+            </div>
+        </div>
+        <div class="alert" *ngIf="message">
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        </div>
+        <div class="buttons">
+            <button class="btn btn-primary float-right" (click)="updateSection()">Save</button>
+        </div>
+    </div>
+</div>

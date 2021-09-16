@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="content">
+        <div class="img">
+            <img src="{{product.image_url}}" alt="Image not available">
+        </div>
+        <div class="details">
+            <div class="title">
+                <h3>{{product.model}}</h3>
+            </div>
+            <div class="features">
+                <ul>
+                    <li>Double side print</li>
+                    <li>no colour printing</li>
+                    <li>WiFi and LAN printing</li>
+                </ul>
+            </div>
+            <div class="category">
+                <p>{{product.sub_category.category.cat_name}}, {{ product.sub_category.name }}</p>
+            </div>
+            <div class="brand">
+                {{product.brand.name}}
+            </div>
+            <div class="consumables">
+                <span *ngFor="let con of product.consumables">{{con.name}}</span>
+            </div>
+        </div>
+        <div class="edit">
+            <button *ngIf="editing" class="btn btn-primary" routerLink="/products/{{ product.id }}">Edit</button>
+        </div>
+    </div>
+</div>
