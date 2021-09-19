@@ -1,5 +1,6 @@
 import { Component, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { CategoryService } from '../../Service/category.service';
+import { SidebarService } from '../../Service/sidebar.service';
 
 @Component({
   selector: 'categories',
@@ -10,8 +11,9 @@ export class CategoriesComponent {
 
   categories;
 
-  constructor(private cs: CategoryService) { 
+  constructor(private cs: CategoryService, private sideBar: SidebarService) {
     this.initializeCategories();
+    this.sideBar.sendItems([{"name": "Sub Categories", "link": "/sub_categories"}]);
   }
 
 

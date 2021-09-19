@@ -35,7 +35,13 @@ export class AssetRequestComponent implements OnInit {
 
   filterConsumables() {
     this.allCategories.forEach(category => {
-      if (!category.consumable) this.categories.push(category);
+      if (category.type != 1) this.categories.push(category);
+    });
+  }
+
+  save(value) {
+    this.rs.createAssetRequest(value).subscribe(request => {
+      console.log("request created");
     });
   }
 }

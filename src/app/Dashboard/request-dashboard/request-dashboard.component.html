@@ -1,0 +1,58 @@
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <th>Sl.no</th>
+      <th>Category</th>
+      <th>Sub Category</th>
+      <th>User Name</th>
+      <th>Section Name</th>
+      <th>Requesting User</th>
+    </thead>
+    <tbody>
+      <tr *ngFor='let request of all_requests; index as i'>
+        <td>{{ i + 1 }}</td>
+        <td>{{ request.category }}</td>
+        <td>{{ request.sub_category_name }}</td>
+        <td>{{ request.user_name }}</td>
+        <td>{{ request.section_name }}</td>
+        <td>{{ request.requesting_user }}</td>
+        <td>
+          <button class="btn" type="button" (click)="openDialog(request.category_id, request.id)"><i class="fas fa-pencil-alt"></i></button>
+          <button class="btn" type="button"><i class="fas fa-times"></i></button>
+          <button class="btn" type="button"><i class="fas fa-exchange-alt"></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="content dialog" *ngIf="displayDialog" (click)="closeDialog()">
+  <div class="container dialog-content" *ngIf="available_assets.length > 0; else noItems" ClickStopPropagation>
+    <table class="table table-striped">
+      <thead>
+        <th>Category</th>
+        <th>Sub Category</th>
+        <th>Asset No.</th>
+        <th>Product Name</th>
+        <th>Actions</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let asset of available_assets">
+          <td>{{ asset.products.sub_category.category.cat_name }}</td>
+          <td>{{ asset.products.sub_category.name }}</td>
+          <td>{{ asset.asset_id }}</td>
+          <td>{{ asset.product_name }}</td>
+          <td><button class="btn" type="button" (click)="approveRequest(asset.id)"><i class="fas fa-pencil-alt"></i></button></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+  <ng-template #noItems>
+    <div class="dialog-content">
+      <div class="text-center">
+        <h4 class="p-5">No Assets Available</h4>
+      </div>
+    </div>
+  </ng-template>
+</div>

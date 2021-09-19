@@ -1,24 +1,26 @@
 <div class="content">
-    <div class="form-group">
-        <label for="category">Category</label>
-        <select name="category" class="form-control" #category (change)="updateSubCategories(category.value)">
-            <option selected disabled>Select an option</option>
-            <option *ngFor="let category of categories" value="{{ category.id }}">{{ category.cat_name }}</option>
-        </select>
-    </div>
-    <div class="form-group" *ngIf="sub_categories">
-        <label for="sub_category">Sub Category</label>
-        <select name="sub_category" class="form-control">
-            <option *ngFor="let sub_category of sub_categories">{{ sub_category?.name}}</option>
-        </select>
-    </div>
-    <div class="form-group" *ngIf="users">
-        <label for="sub_category">Users</label>
-        <select name="user" class="form-control">
-            <option *ngFor="let user of users" value="{{ user.id }}">{{ user?.name}}</option>
-        </select>
-    </div>
-    <div class="button">
-        <button class="btn btn-primary" [disabled]='!users'>Save</button>
-    </div>
+  <form (ngSubmit)="save(form.value)" #form="ngForm">
+      <div class="form-group">
+          <label for="category">Category</label>
+          <select name="category" class="form-control" #category (change)="updateSubCategories(category.value)">
+              <option selected disabled>Select an option</option>
+              <option *ngFor="let category of categories" value="{{ category.id }}">{{ category.cat_name }}</option>
+          </select>
+      </div>
+      <div class="form-group" *ngIf="sub_categories">
+          <label for="sub_category">Sub Category</label>
+          <select name="sub_category" class="form-control" ngModel>
+              <option *ngFor="let sub_category of sub_categories" value="{{ sub_category.id }}">{{ sub_category?.name}}</option>
+          </select>
+      </div>
+      <div class="form-group" *ngIf="users">
+          <label for="sub_category">Users</label>
+          <select name="user_id" class="form-control" ngModel>
+              <option *ngFor="let user of users" value="{{ user.id }}">{{ user?.name}}</option>
+          </select>
+      </div>
+      <div class="button">
+          <button class="btn btn-primary" type="submit" [disabled]='!users'>Save</button>
+      </div>
+  </form>
 </div>

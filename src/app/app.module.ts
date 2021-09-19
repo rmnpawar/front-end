@@ -44,6 +44,10 @@ import { AssetService } from './Service/asset.service';
 import { AdminViewComponent } from './Request/admin-view/admin-view.component';
 import { AssetsComponent } from './Asset/assets/assets.component';
 import { AssetListComponent } from './Asset/asset-list/asset-list.component';
+import { SubCategoryCreateComponent } from './Categories/sub-category-create/sub-category-create.component';
+import { SubCategoriesComponent } from './Categories/sub-categories/sub-categories.component';
+import { RequestDashboardComponent } from './Dashboard/request-dashboard/request-dashboard.component';
+import { RequestViewComponent } from './Request/request-view/request-view.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent, canActivate: [AuthGuard]},
@@ -51,6 +55,8 @@ const routes: Routes = [
   { path: 'login', component: LoginFormComponent},
   { path: 'categories/create', component: CreateFormComponent, canActivate: [AuthGuard]},
   { path: 'categories', component: CategoriesComponent, canActivate: [AuthGuard]},
+  { path: 'sub_categories/create', component: SubCategoryCreateComponent, canActivate: [AuthGuard]},
+  { path: 'sub_categories', component: SubCategoriesComponent, canActivate: [AuthGuard]},
   { path: 'sections', component: SectionsComponent, canActivate: [AuthGuard]},
   { path: 'products/create', component: EditFormComponent, canActivate: [AuthGuard]},
   { path: 'products/:id', component: EditFormComponent, canActivate: [AuthGuard]},
@@ -60,10 +66,11 @@ const routes: Routes = [
   { path: 'invoices/:id/process', component: ProcessComponent, canActivate: [AuthGuard]},
   { path: 'invoices/:id', component: InvoiceDetailsComponent, canActivate: [AuthGuard]},
   { path: 'invoices', component: InvoicesComponent, canActivate: [AuthGuard]},
-  { path: 'requests', component: AdminViewComponent, canActivate: [AuthGuard]},
+  //{ path: 'requests', component: AdminViewComponent, canActivate: [AuthGuard]},
   { path: 'all-assets', component: AssetsComponent, canActivate: [AuthGuard]},
   { path: 'assets-list', component: AssetListComponent, canActivate: [AuthGuard]},
 
+  { path: 'requests', component: RequestDashboardComponent, canActivate: [AuthGuard] },
 ];
 
 
@@ -94,7 +101,11 @@ const routes: Routes = [
     ConsumableRequestComponent,
     AdminViewComponent,
     AssetsComponent,
-    AssetListComponent
+    AssetListComponent,
+    SubCategoryCreateComponent,
+    SubCategoriesComponent,
+    RequestDashboardComponent,
+    RequestViewComponent
   ],
   imports: [
     BrowserModule,

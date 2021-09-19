@@ -9,6 +9,7 @@ export class CategoryService {
   client: AuthorizedHttpService;
 
   base_url: string = "http://localhost:8000/api/categories/";
+  base_url_sub_category = "http://localhost:8000/api/sub_categories/"
 
   constructor(private auth: AuthenticationService) {
     // http.setToken(auth.getToken());
@@ -28,15 +29,19 @@ export class CategoryService {
   }
 
   public delete(id: number) {
-    return this.auth.http.Delete(this.base_url + `/${id}`);
+    return this.auth.http.Delete(this.base_url + id);
   }
 
-  async getSubCategories() {
-    return await this.auth.http.Get("http://localhost:8000/api/sub_categories").toPromise();
+  public getSubCategories() {
+    return this.auth.http.Get(this.base_url_sub_category);
   }
 
-  async getSubCategoryProduct(sub_category_id) {
-    return await this.auth.http.Get("http://localhost:8000/api/sub_categories/" + sub_category_id + "/products").toPromise();
+  public getSubCategoryProduct(sub_category_id) {
+    return this.auth.http.Get(this.base_url_sub_category + sub_category_id + "/products");
+  }
+
+  public createSubCategory(value) {
+    return this.auth.http.Post(this.base_url_sub_category, value);
   }
 
   async getSubCategoriesForCategory(category) {

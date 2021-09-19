@@ -6,8 +6,8 @@
                 <input type="text" name="cat_name" class="form-control" ngModel>
             </div>
             <div class="form-group">
-                <label for="consumable">Consumable</label>
-                <input type="checkbox" name="consumable" ngModel>
+                <label for="consumable">Type</label>
+                <input type="number" name="type" ngModel class="form-control" title="0 for Asset, 1 for Consumable, 2 for Special">
             </div>
             <div class="form-group">
                 <label for="image_url">Image Url</label>
@@ -15,10 +15,10 @@
             </div>
             <button class="btn btn-primary">Save</button>
         </form>
-        
+
     </div>
     <div class="img">
         <img [src]="imgUrl.value" width="270px" height="480px">
-    </div>    
+    </div>
 </div>
 

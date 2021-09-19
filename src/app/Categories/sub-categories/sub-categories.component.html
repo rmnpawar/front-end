@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="content col-md-4" *ngIf="sub_categories">
+    <table class="table table-striped">
+      <thead>
+        <th>Sl.No</th>
+        <th>Name</th>
+        <th>Category</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sub_category of sub_categories; index as ind">
+          <td>{{ ind + 1 }}</td>
+          <td>{{ sub_category.name }}</td>
+          <td>{{ sub_category.category.cat_name }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <sub-category-create></sub-category-create>
+</div>
+

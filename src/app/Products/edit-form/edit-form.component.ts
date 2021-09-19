@@ -24,17 +24,17 @@ export class EditFormComponent implements OnInit {
     private cs: CategoryService,
     private bs: BrandService) {
 
-    
+
    }
 
   async ngOnInit() {
     this.brands = this.bs.getAll();
-    this.cs.getSubCategories().then(sub_categories => {
+    this.cs.getSubCategories().subscribe(sub_categories => {
       this.sub_categories = sub_categories;
     });
 
     this.all_consumables = await this.cs.getAllConsumables();
-    
+
     let id = this.route.snapshot.params['id'];
 
     if (id) {

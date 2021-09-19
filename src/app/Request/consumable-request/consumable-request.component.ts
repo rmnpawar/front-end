@@ -15,10 +15,10 @@ export class ConsumableRequestComponent implements OnInit {
   assets;
   consumables = [];
   allConsumablesCategories;
- 
+
   constructor(
-    private auth: AuthenticationService, 
-    private rs: RequestService, 
+    private auth: AuthenticationService,
+    private rs: RequestService,
     private as: AssetService,
     private cs: CategoryService) { }
 
@@ -33,7 +33,9 @@ export class ConsumableRequestComponent implements OnInit {
   }
 
   async getCategories() {
-    this.allConsumablesCategories = await this.cs.getSubCategories();
+    this.cs.getSubCategories().subscribe(sub_categories => {
+      this.allConsumablesCategories = sub_categories;
+    });
     this.filterConsumables();
   }
 
