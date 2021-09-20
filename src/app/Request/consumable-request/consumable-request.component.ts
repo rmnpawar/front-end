@@ -16,6 +16,8 @@ export class ConsumableRequestComponent implements OnInit {
   consumables = [];
   allConsumablesCategories;
 
+  current_request: {asset_id?: number, user_id?: number, sub_category?: number}
+
   constructor(
     private auth: AuthenticationService,
     private rs: RequestService,
@@ -49,6 +51,10 @@ export class ConsumableRequestComponent implements OnInit {
     this.allConsumablesCategories.forEach(consumable => {
         if (consumable.is_consumable && consumable.category.cat_name != "Cartridges" && consumable.category.cat_name != "Drums") this.consumables.push(consumable);
     });
+  }
+
+  createRequest() {
+
   }
 
 }
