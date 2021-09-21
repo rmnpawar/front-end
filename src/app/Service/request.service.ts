@@ -23,6 +23,10 @@ export class RequestService {
     return this.auth.http.Post(this.base_url, value);
   }
 
+  public createConsumableRequest(value) {
+    return this.auth.http.Post(this.base_url + 'consumable/create', value);
+  }
+
   public getAllRequests() {
     return this.auth.http.Get(this.base_url);
   }

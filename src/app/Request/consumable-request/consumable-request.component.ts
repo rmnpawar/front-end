@@ -17,6 +17,7 @@ export class ConsumableRequestComponent implements OnInit {
   allConsumablesCategories;
 
   current_request: {asset_id?: number, user_id?: number, sub_category?: number}
+  current_asset_id;
 
   constructor(
     private auth: AuthenticationService,
@@ -44,6 +45,7 @@ export class ConsumableRequestComponent implements OnInit {
   assetConsumables(index) {
     console.log(this.assets[index]);
     this.consumables = this.assets[index].products.consumables;
+    this.current_asset_id = this.assets[index].id;
   }
 
   filterConsumables() {
@@ -53,8 +55,12 @@ export class ConsumableRequestComponent implements OnInit {
     });
   }
 
-  createRequest() {
-
+  createRequest(form_value) {
+    form_value.asset_id = this.current_asset_id;
+    console.log(form_value);
+    this.rs.createConsumableRequest(form_value).subscribe(request => {
+      console.log("request created " + request);
+    })
   }
 
 }
