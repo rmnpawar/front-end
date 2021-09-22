@@ -1,4 +1,4 @@
-<div class="container m-2" *ngIf='consumable_requests'>
+<div class="container m-2" *ngIf='consumable_requests?.length > 0; else noitems'>
   <h4>Consumable Requests</h4>
   <table class="table table-striped">
     <thead>
@@ -43,7 +43,7 @@
           <td>{{ consumable.name + " " + consumable.model }}</td>
           <td>{{ consumable.balance }}</td>
           <td>{{ consumable.invoice_date + " " + consumable.invoice_number }}</td>
-          <td><button class="btn" type="button" (click)="approveRequest(consumable.id)"><i class="fas fa-pencil-alt"></i></button></td>
+          <td><button class="btn" type="button" (click)="approveRequest(consumable.consumable_id)"><i class="fas fa-pencil-alt"></i></button></td>
         </tr>
       </tbody>
     </table>
@@ -52,7 +52,7 @@
   <ng-template #noItems>
     <div class="dialog-content">
       <div class="text-center">
-        <h4 class="p-5">No Assets Available</h4>
+        <h4 class="p-5">Nothing Available</h4>
       </div>
     </div>
   </ng-template>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RequestService } from '../../Service/request.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'consumable-request-view',
@@ -8,14 +9,16 @@ import { RequestService } from '../../Service/request.service';
 })
 export class ConsumableRequestViewComponent implements OnInit {
 
-  displayDialog = false;
+  displayDialog;
   current_request_id;
   consumable_requests = undefined;
-  available_consumables = undefined;
+  available_consumables;
 
-  constructor(private rs: RequestService) { }
+  constructor(private rs: RequestService, private router: Router) { }
 
   ngOnInit(): void {
+    this.displayDialog = false;
+    this.available_consumables = undefined;
     this.rs.getConsumableRequests().subscribe(requests => {
       this.consumable_requests = requests;
     });
@@ -23,8 +26,6 @@ export class ConsumableRequestViewComponent implements OnInit {
 
   openDialog(sub_category_id: number, request_id: number) {
     this.current_request_id = request_id;
-
-    console.log(request_id);
 
     this.rs.getAvailableConsumables(sub_category_id).subscribe(consumables => {
       this.available_consumables = consumables;
@@ -38,12 +39,12 @@ export class ConsumableRequestViewComponent implements OnInit {
   }
 
   approveRequest(consumable_id: number) {
-    console.log(this.current_request_id, consumable_id);
-    // this.rs.approveConsumableRequest(this.current_request_id, consumable_id).subscribe(response => {
-    //   if (response == 1) {
-    //     console.log("request approved");
-    //   }
-    // });
+    this.rs.approveConsumableRequest(this.current_request_id, consumable_id).subscribe(response => {
+      if (response == 1) {
+        console.log(response);
+        this.ngOnInit();
+      }
+    });
   }
 
 }
