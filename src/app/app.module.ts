@@ -48,6 +48,7 @@ import { SubCategoryCreateComponent } from './Categories/sub-category-create/sub
 import { SubCategoriesComponent } from './Categories/sub-categories/sub-categories.component';
 import { RequestDashboardComponent } from './Dashboard/request-dashboard/request-dashboard.component';
 import { RequestViewComponent } from './Request/request-view/request-view.component';
+import { ConsumableRequestViewComponent } from './Request/consumable-request-view/consumable-request-view.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent, canActivate: [AuthGuard]},
@@ -70,7 +71,7 @@ const routes: Routes = [
   { path: 'all-assets', component: AssetsComponent, canActivate: [AuthGuard]},
   { path: 'assets-list', component: AssetListComponent, canActivate: [AuthGuard]},
 
-  { path: 'requests', component: RequestDashboardComponent, canActivate: [AuthGuard] },
+  { path: 'requests', component: RequestViewComponent, canActivate: [AuthGuard] },
 ];
 
 
@@ -105,7 +106,8 @@ const routes: Routes = [
     SubCategoryCreateComponent,
     SubCategoriesComponent,
     RequestDashboardComponent,
-    RequestViewComponent
+    RequestViewComponent,
+    ConsumableRequestViewComponent
   ],
   imports: [
     BrowserModule,

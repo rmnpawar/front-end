@@ -1,24 +1,23 @@
-<div class="container m-2" *ngIf="all_requests">
-  <h4>Asset Requests</h4>
+<div class="container m-2" *ngIf='consumable_requests'>
+  <h4>Consumable Requests</h4>
   <table class="table table-striped">
     <thead>
-      <th>Sl.no</th>
-      <th>Category</th>
-      <th>Sub Category</th>
-      <th>User Name</th>
-      <th>Section Name</th>
-      <th>Requesting User</th>
+      <th>Sl.No</th>
+      <th>Requested Con.</th>
+      <th>Requested By</th>
+      <th>Section</th>
+      <th>Asset</th>
+      <th></th>
     </thead>
     <tbody>
-      <tr *ngFor='let request of all_requests; index as i'>
+      <tr *ngFor="let request of consumable_requests; index as i">
         <td>{{ i + 1 }}</td>
-        <td>{{ request.category }}</td>
-        <td>{{ request.sub_category_name }}</td>
-        <td>{{ request.user_name }}</td>
+        <td>{{ request.sub_category }}</td>
+        <td>{{ request.requesting_user_name }}</td>
         <td>{{ request.section_name }}</td>
-        <td>{{ request.requesting_user }}</td>
+        <td>{{ request.asset_name }}</td>
         <td>
-          <button class="btn" type="button" (click)="openDialog(request.category_id, request.id)"><i class="fas fa-pencil-alt"></i></button>
+          <button class="btn" type="button"><i class="fas fa-pencil-alt"></i></button>
           <button class="btn" type="button"><i class="fas fa-times"></i></button>
           <button class="btn" type="button"><i class="fas fa-exchange-alt"></i></button>
         </td>
@@ -26,6 +25,7 @@
     </tbody>
   </table>
 </div>
+
 
 <div class="content dialog" *ngIf="displayDialog" (click)="closeDialog()">
   <div class="container dialog-content" *ngIf="available_assets.length > 0; else noItems" ClickStopPropagation>

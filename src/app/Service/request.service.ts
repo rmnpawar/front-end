@@ -30,4 +30,8 @@ export class RequestService {
   public getAllRequests() {
     return this.auth.http.Get(this.base_url);
   }
+
+  public getConsumableRequests() {
+    return this.auth.http.Get(this.base_url + 'consumables');
+  }
 }

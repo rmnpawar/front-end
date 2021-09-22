@@ -3,7 +3,7 @@ import { RequestService } from '../../Service/request.service';
 import { AssetService } from '../../Service/asset.service';
 
 @Component({
-  selector: 'app-request-dashboard',
+  selector: 'asset-request-dashboard',
   templateUrl: './request-dashboard.component.html',
   styleUrls: ['./request-dashboard.component.scss']
 })
