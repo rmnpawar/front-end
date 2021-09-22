@@ -34,4 +34,12 @@ export class RequestService {
   public getConsumableRequests() {
     return this.auth.http.Get(this.base_url + 'consumables');
   }
+
+  public getAvailableConsumables(id: number) {
+    return this.auth.http.Get('http://localhost:8000/api/consumables/for_id/' + id);
+  }
+
+  public approveConsumableRequest($request_id, $consumable_id) {
+    return this.auth.http.Post(this.base_url + 'consumable/approve', {'request_id':$request_id,'consumable_id': $consumable_id});
+  }
 }
