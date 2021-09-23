@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { RequestService } from '../../Service/request.service';
 import { Router } from '@angular/router';
 
@@ -8,6 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./consumable-request-view.component.scss']
 })
 export class ConsumableRequestViewComponent implements OnInit {
+
+  @Input('buttons') buttons;
+  @Input('requests') requests: any[] = undefined;
 
   displayDialog;
   current_request_id;
@@ -19,9 +22,16 @@ export class ConsumableRequestViewComponent implements OnInit {
   ngOnInit(): void {
     this.displayDialog = false;
     this.available_consumables = undefined;
-    this.rs.getConsumableRequests().subscribe(requests => {
-      this.consumable_requests = requests;
-    });
+
+    if (this.requests == undefined) {
+      this.rs.getConsumableRequests().subscribe(requests => {
+        this.consumable_requests = requests;
+      });
+    } else {
+      this.consumable_requests = this.requests;
+    }
+
+
   }
 
   openDialog(sub_category_id: number, request_id: number) {

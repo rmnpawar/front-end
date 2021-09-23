@@ -49,6 +49,10 @@ import { SubCategoriesComponent } from './Categories/sub-categories/sub-categori
 import { RequestDashboardComponent } from './Dashboard/request-dashboard/request-dashboard.component';
 import { RequestViewComponent } from './Request/request-view/request-view.component';
 import { ConsumableRequestViewComponent } from './Request/consumable-request-view/consumable-request-view.component';
+import { RequestIssueComponent } from './Request/request-issue/request-issue.component';
+import { AssetRequestIssueComponent } from './Request/asset-request-issue/asset-request-issue.component';
+import { ConsumableRequestIssueComponent } from './Request/consumable-request-issue/consumable-request-issue.component';
+import { ConsumableHistoryComponent } from './Reports/consumable-history/consumable-history.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent, canActivate: [AuthGuard]},
@@ -107,7 +111,11 @@ const routes: Routes = [
     SubCategoriesComponent,
     RequestDashboardComponent,
     RequestViewComponent,
-    ConsumableRequestViewComponent
+    ConsumableRequestViewComponent,
+    RequestIssueComponent,
+    AssetRequestIssueComponent,
+    ConsumableRequestIssueComponent,
+    ConsumableHistoryComponent
   ],
   imports: [
     BrowserModule,

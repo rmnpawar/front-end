@@ -1,4 +1,4 @@
-<div class="container m-2" *ngIf='consumable_requests?.length > 0; else noitems'>
+<div class="container m-2" *ngIf='consumable_requests?.length > 0;'>
   <h4>Consumable Requests</h4>
   <table class="table table-striped">
     <thead>
@@ -17,9 +17,12 @@
         <td>{{ request.section_name }}</td>
         <td>{{ request.asset_name }}</td>
         <td>
-          <button class="btn" type="button" (click)='openDialog(request.sub_category_id, request.id)'><i class="fas fa-pencil-alt"></i></button>
-          <button class="btn" type="button"><i class="fas fa-times"></i></button>
-          <button class="btn" type="button"><i class="fas fa-exchange-alt"></i></button>
+          <div class="request_buttons" *ngIf='this.buttons == "enabled"'>
+            <button class="btn" type="button" (click)='openDialog(request.sub_category_id, request.id)'><i class="fas fa-pencil-alt"></i></button>
+            <button class="btn" type="button"><i class="fas fa-times"></i></button>
+            <button class="btn" type="button"><i class="fas fa-exchange-alt"></i></button>
+            <button class="btn" type="button" title="Request History"><i class="fas fa-history"></i></button>
+          </div>
         </td>
       </tr>
     </tbody>
