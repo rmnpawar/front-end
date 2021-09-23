@@ -42,4 +42,10 @@ export class RequestService {
   public approveConsumableRequest($request_id, $consumable_id) {
     return this.auth.http.Post(this.base_url + 'consumable/approve', {'request_id':$request_id,'consumable_id': $consumable_id});
   }
+
+
+
+  public getConsumableHistory() {
+    return this.auth.http.Get('http://localhost:8000/api/consumables/history');
+  }
 }
