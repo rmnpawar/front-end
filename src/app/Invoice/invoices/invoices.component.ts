@@ -10,8 +10,8 @@ import { LoadingService } from '../../ux/loading.service';
 })
 export class InvoicesComponent implements OnInit {
 
-  invoices;
-  constructor(private service: InvoiceService, private router: Router, private loadingService: LoadingService) { 
+  invoices?;
+  constructor(private service: InvoiceService, private router: Router, private loadingService: LoadingService) {
     // this.router.events.subscribe((routerEvent) => {
     //   if (routerEvent instanceof NavigationEnd) {
     //     this.ngOnInit();
@@ -25,10 +25,10 @@ export class InvoicesComponent implements OnInit {
   }
 
   private updateInvoices() {
-    this.invoices = this.service.getAll().then((invoices) => {
+    this.service.getAll().subscribe((invoices) => {
       this.invoices = invoices;
-        this.loadingService.setStatus(false);
+      this.loadingService.setStatus(false);
     });
   }
-
+l
 }

@@ -1,12 +1,16 @@
 import { Component } from '@angular/core';
 import { AuthenticationService } from './Service/authentication.service';
-import { NavigationStart, Router, NavigationEnd } from '@angular/router';
+import { NavigationStart, Router, NavigationEnd, RouterOutlet } from '@angular/router';
 import { LoadingService } from './ux/loading.service';
+import {fadeIn, fadeInAnimation} from '../app/animations/fade-in.animation';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [fadeInAnimation, fadeIn],
+
+  host: {'[@routeAnimations]': ''},
 })
 export class AppComponent {
   title = 'front-end';
@@ -17,6 +21,13 @@ export class AppComponent {
     this.loadingService.getSubject().subscribe((status) => {
       this.loading = status;
     })
+  }
+
+  prepareRoute(outlet: RouterOutlet) {
+    let data = outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
+    return data;
+    // let num = Math.random();
+    // return num;
   }
 
   getUser() {

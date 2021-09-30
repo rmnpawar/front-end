@@ -1,11 +1,11 @@
-<div class="container">
+<div class="">
     <p class="lead">Categories</p>
     <!-- <table class="table col-8">
         <thead>
             <th>S.no</th>
             <th>Name</th>
             <th></th>
-            
+
             <th></th>
         </thead>
         <tbody>
@@ -13,12 +13,12 @@
                 <!-- <td>{{cat.id}}</td>
                 <td>{{cat.cat_name}}</td>
                 <td><a class="btn btn-secondary">Show</a></td>
-                <td><a class="btn btn-warning">Edit</a></td> 
+                <td><a class="btn btn-warning">Edit</a></td>
             </tr>
         </tbody>
     </table> -->
     <a class="btn btn-primary" routerLink="/categories/create">New</a>
-    <div class="row" *ngFor="let category of categories">
-        <category [category]='category' style="width: 70%;" (categorydelete)="removeCategory($event)"></category>
+    <div class="ro" *ngFor="let category of categories">
+        <category [category]='category' style="width: 70%;" (categorydelete)="removeCategory($event)" @fadeInAnimation></category>
     </div>
 </div>

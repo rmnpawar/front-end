@@ -15,14 +15,13 @@ export class ProductsComponent implements OnInit, OnDestroy {
   constructor(private sidebBar: SidebarService, private productService: ProductService, private loadingService: LoadingService) {
     this.loadingService.setStatus(true);
   }
-  
+
   async ngOnInit() {
     this.sidebBar.sendItems([{"name": "Product", "link": "/products"}]);
     this.products = await this.productService.getProducts();
-    console.log(this.products);
     this.loadingService.setStatus(false);
   }
-  
+
   ngOnDestroy(): void {
     this.sidebBar.sendItems([]);
   }

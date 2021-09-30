@@ -1,11 +1,14 @@
 import { NONE_TYPE } from '@angular/compiler';
 import { Component, ElementRef, OnInit } from '@angular/core';
+import { fadeIn, fadeInAnimation } from 'src/app/animations/fade-in.animation';
 import { SectionService } from '../../Service/section.service';
 
 @Component({
   selector: 'sections',
   templateUrl: './sections.component.html',
-  styleUrls: ['./sections.component.scss']
+  styleUrls: ['./sections.component.scss'],
+  animations: [fadeInAnimation],
+  host: { '[@fadeInAnimation]': '' }
 })
 export class SectionsComponent implements OnInit {
 
@@ -14,7 +17,7 @@ export class SectionsComponent implements OnInit {
   showDialog = false;
   message = null;
 
-  constructor(private ss: SectionService) { 
+  constructor(private ss: SectionService) {
   }
 
   openDialog(section) {
@@ -50,5 +53,5 @@ export class SectionsComponent implements OnInit {
   deleteSection(id) {
     this.ss.delete(id).subscribe(res => true);
   }
- 
+
 }

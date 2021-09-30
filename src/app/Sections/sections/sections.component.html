@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf='sections'>
     <p class="lead">Sections</p>
     <input #section_name type="text" name="section_name" class="form-control col-4 mb-2" placeholder="Create a new section">
     <button type="button" (click)="createSection(section_name.value)" class="btn btn-primary mb-2">Create</button>
@@ -17,7 +17,7 @@
                         <i class="fas fa-pencil-alt"></i>
                     </button>
                     <button class="btn" type="button" (click)="deleteSection(section.id)">
-                        <span><i class="fas fa-trash-alt"></i></span>   
+                        <span><i class="fas fa-trash-alt"></i></span>
                     </button>
                 </td>
             </tr>

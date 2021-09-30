@@ -11,7 +11,7 @@ import { CategoryService } from '../../Service/category.service';
 })
 export class ConsumableRequestComponent implements OnInit {
 
-  users;
+  users?;
   assets;
   consumables = [];
   allConsumablesCategories;
@@ -38,12 +38,11 @@ export class ConsumableRequestComponent implements OnInit {
   async getCategories() {
     this.cs.getSubCategories().subscribe(sub_categories => {
       this.allConsumablesCategories = sub_categories;
+      this.filterConsumables();
     });
-    this.filterConsumables();
   }
 
   assetConsumables(index) {
-    console.log(this.assets[index]);
     this.consumables = this.assets[index].products.consumables;
     this.current_asset_id = this.assets[index].id;
   }
@@ -57,7 +56,6 @@ export class ConsumableRequestComponent implements OnInit {
 
   createRequest(form_value) {
     form_value.asset_id = this.current_asset_id;
-    console.log(form_value);
     this.rs.createConsumableRequest(form_value).subscribe(request => {
       console.log("request created " + request);
     })

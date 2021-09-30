@@ -10,8 +10,8 @@ export class InvoiceService {
 
   constructor(private auth: AuthenticationService) { }
 
-  async getAll() {
-    return await this.auth.http.Get(this.base_url).toPromise();
+  getAll() {
+    return this.auth.http.Get(this.base_url);
   }
 
   createInvoice(invoice) {

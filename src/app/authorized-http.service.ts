@@ -13,37 +13,54 @@ export class AuthorizedHttpService {
   token: string;
 
 
-  constructor(public http: HttpClient) {
-  }
+  constructor(public http: HttpClient) {}
 
-  private setup() {
+  private initializeHeaders() {
     this.options.headers = new HttpHeaders({"Authorization": "Bearer " + this.token});
   }
 
-  public Get<T>(endPoint: string) : Observable<T> {
-    this.setup();
+  private setupHeaders(headers: {}) {
+    Object.keys(headers).forEach((key) => {
+      this.options.headers.append(key, headers[key]);
+    })
+  }
+
+  private setupParameters(parameters: {}) {
+    this.options.params = new HttpParams(parameters);
+  }
+
+  public Get<T>(endPoint: string, headers?: {}, parameters?: {}) : Observable<T> {
+    if (parameters) {
+      this.setupParameters(parameters);
+    }
+
+    if (headers) {
+      this.setupHeaders(headers);
+    }
+
     return this.http.get<T>(endPoint, this.options);
   }
 
 
   public Post<T>(endPoint: string, params: Object) : Observable<T> {
-    this.setup();
+    // this.setup();
     return this.http.post<T>(endPoint, params, this.options);
   }
 
 
   public Put<T>(endPoint: string, params: Object) : Observable<T> {
-    this.setup();
+    // this.setup();
     return this.http.put<T>(endPoint, params, this.options);
   }
 
 
   public Delete<T>(endPoint: string) : Observable<T> {
-    this.setup();
+    // this.setup();
     return this.http.delete<T>(endPoint, this.options);
   }
 
   public setToken(token:string) {
     this.token = token;
+    this.initializeHeaders();
   }
 }

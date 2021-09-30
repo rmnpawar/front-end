@@ -1,11 +1,15 @@
 import { Component, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { fadeInAnimation } from 'src/app/animations/fade-in.animation';
 import { CategoryService } from '../../Service/category.service';
 import { SidebarService } from '../../Service/sidebar.service';
 
 @Component({
   selector: 'categories',
   templateUrl: './categories.component.html',
-  styleUrls: ['./categories.component.scss']
+  styleUrls: ['./categories.component.scss'],
+  animations: [fadeInAnimation],
+
+  host: {'[@fadeInAnimation]': ''}
 })
 export class CategoriesComponent {
 

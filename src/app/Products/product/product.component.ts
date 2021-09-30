@@ -15,7 +15,6 @@ export class ProductComponent implements OnInit {
 
   ngOnInit(): void {
     // this.sidebardata.emit("Data");
-    console.log(this.product);
   }
 
 }

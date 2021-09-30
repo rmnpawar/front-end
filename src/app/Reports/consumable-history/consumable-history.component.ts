@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RequestService } from 'src/app/Service/request.service';
+import { ReportsService } from 'src/app/Service/reports.service';
 
 @Component({
   selector: 'app-consumable-history',
@@ -8,12 +9,14 @@ import { RequestService } from 'src/app/Service/request.service';
 })
 export class ConsumableHistoryComponent implements OnInit {
 
-  requests: any[];
+  consumables?: {};
 
-  constructor(private rs: RequestService) { }
+  constructor(private reportService: ReportsService) { }
 
   ngOnInit(): void {
-
+    this.reportService.getConsumableHistory().subscribe(consumables => {
+      this.consumables = consumables;
+    })
   }
 
 }

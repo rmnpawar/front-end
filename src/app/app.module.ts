@@ -1,6 +1,6 @@
-import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http'
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 
@@ -54,29 +54,7 @@ import { AssetRequestIssueComponent } from './Request/asset-request-issue/asset-
 import { ConsumableRequestIssueComponent } from './Request/consumable-request-issue/consumable-request-issue.component';
 import { ConsumableHistoryComponent } from './Reports/consumable-history/consumable-history.component';
 
-const routes: Routes = [
-  { path: '', component: DashboardComponent, canActivate: [AuthGuard]},
-  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
-  { path: 'login', component: LoginFormComponent},
-  { path: 'categories/create', component: CreateFormComponent, canActivate: [AuthGuard]},
-  { path: 'categories', component: CategoriesComponent, canActivate: [AuthGuard]},
-  { path: 'sub_categories/create', component: SubCategoryCreateComponent, canActivate: [AuthGuard]},
-  { path: 'sub_categories', component: SubCategoriesComponent, canActivate: [AuthGuard]},
-  { path: 'sections', component: SectionsComponent, canActivate: [AuthGuard]},
-  { path: 'products/create', component: EditFormComponent, canActivate: [AuthGuard]},
-  { path: 'products/:id', component: EditFormComponent, canActivate: [AuthGuard]},
-  { path: 'products', component: ProductsComponent, canActivate: [AuthGuard]},
-  { path: 'suppliers', component: SuppliersComponent, canActivate: [AuthGuard]},
-  { path: 'invoices/create', component: AddInvoiceComponent, canActivate: [AuthGuard]},
-  { path: 'invoices/:id/process', component: ProcessComponent, canActivate: [AuthGuard]},
-  { path: 'invoices/:id', component: InvoiceDetailsComponent, canActivate: [AuthGuard]},
-  { path: 'invoices', component: InvoicesComponent, canActivate: [AuthGuard]},
-  //{ path: 'requests', component: AdminViewComponent, canActivate: [AuthGuard]},
-  { path: 'all-assets', component: AssetsComponent, canActivate: [AuthGuard]},
-  { path: 'assets-list', component: AssetListComponent, canActivate: [AuthGuard]},
 
-  { path: 'requests', component: RequestViewComponent, canActivate: [AuthGuard] },
-];
 
 
 @NgModule({
@@ -115,13 +93,13 @@ const routes: Routes = [
     RequestIssueComponent,
     AssetRequestIssueComponent,
     ConsumableRequestIssueComponent,
-    ConsumableHistoryComponent
+    ConsumableHistoryComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    RouterModule.forRoot(routes),
 
     FormsModule
   ],
