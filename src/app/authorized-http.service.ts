@@ -29,13 +29,13 @@ export class AuthorizedHttpService {
     this.options.params = new HttpParams(parameters);
   }
 
-  public Get<T>(endPoint: string, headers?: {}, parameters?: {}) : Observable<T> {
-    if (parameters) {
-      this.setupParameters(parameters);
+  public Get<T>(endPoint: string, options?: CustomOptions) : Observable<T> {
+    if (options) {
+      this.setupParameters(options.params);
     }
 
-    if (headers) {
-      this.setupHeaders(headers);
+    if (options?.headers) {
+      this.setupHeaders(options.headers);
     }
 
     return this.http.get<T>(endPoint, this.options);

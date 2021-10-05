@@ -1,11 +1,24 @@
-<div class="content">
+<div class="content" *ngIf='this.consumables' @fadeInAnimation>
   <table class="table table-striped">
     <thead>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Sl.no</th>
+      <th>Asset Number</th>
+      <th>User</th>
+      <th>Requesting User</th>
+      <th>Section</th>
+      <th>Date</th>
+      <th>Consumable</th>
     </thead>
+    <tbody>
+      <tr *ngFor="let consumable of consumables; index as i">
+        <td>{{ i + 1 }}</td>
+        <td>{{ consumable.asset_number }}</td>
+        <td>{{ consumable.user_name }}</td>
+        <td>{{ consumable.requesting_user_name }}</td>
+        <td>{{ consumable.section_name }}</td>
+        <td>{{ consumable.date }}</td>
+        <td>{{ consumable.sub_category }}</td>
+      </tr>
+    </tbody>
   </table>
 </div>

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AuthorizedHttpService } from '../authorized-http.service';
 import { AuthenticationService } from './authentication.service';
+import { HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class ReportsService {
   constructor(private auth: AuthorizedHttpService) { }
 
   getConsumableHistory(parameters?: {}) {
-    return this.auth.Get(this.base_url + 'consumables/history', {}, parameters);
+    let httpParameters = new HttpParams(parameters);
+    return this.auth.Get(this.base_url + 'consumables/history', {params: httpParameters});
   }
 }
