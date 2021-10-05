@@ -19,10 +19,11 @@ export class ConsumableHistoryComponent implements OnInit {
 
   consumables?: {};
 
-  constructor(private reportService: ReportsService, private loadingService :LoadingService) { }
+  constructor(private reportService: ReportsService, private loadingService :LoadingService) {
+    this.loadingService.setStatus(true);
+   }
 
   ngOnInit(): void {
-    this.loadingService.setStatus(true);
     this.reportService.getConsumableHistory(this.createParameters()).subscribe(consumables => {
       this.consumables = consumables;
       this.loadingService.setStatus(false);

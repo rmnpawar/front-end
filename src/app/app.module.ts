@@ -53,6 +53,7 @@ import { RequestIssueComponent } from './Request/request-issue/request-issue.com
 import { AssetRequestIssueComponent } from './Request/asset-request-issue/asset-request-issue.component';
 import { ConsumableRequestIssueComponent } from './Request/consumable-request-issue/consumable-request-issue.component';
 import { ConsumableHistoryComponent } from './Reports/consumable-history/consumable-history.component';
+import { AssetHistoryComponent } from './Reports/asset-history/asset-history.component';
 
 
 
@@ -94,6 +95,7 @@ import { ConsumableHistoryComponent } from './Reports/consumable-history/consuma
     AssetRequestIssueComponent,
     ConsumableRequestIssueComponent,
     ConsumableHistoryComponent,
+    AssetHistoryComponent,
   ],
   imports: [
     BrowserModule,
