@@ -34,4 +34,8 @@ export class AssetService {
   public assetHistory(id: number) {
     return this.auth.http.Get(this.base_url + id + '/history');
   }
+
+  public repairHistory(id: number) {
+    return this.auth.http.Get(this.base_url + id + '/repairs');
+  }
 }

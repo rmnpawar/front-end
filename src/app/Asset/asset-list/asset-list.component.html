@@ -29,8 +29,8 @@
               </ng-template>
               <td>{{ asset.last_updated }}</td>
               <td>
-                <a title="Asset history" class="btn" routerLink="asset"><i class="fas fa-history"></i></a>
-                <button title="Repair history" class="btn" (click)="open('asset-history', id.data-id)" data-id="{{ asset.id }}"><i class="fas fa-file-medical"></i></button>
+                <button title="Asset history" class="btn" (click)="open('asset-history', asset.id)"><i class="fas fa-history"></i></button>
+                <button title="Repair history" class="btn" (click)="open('repair-history', asset.id)"><i class="fas fa-file-medical"></i></button>
               </td>
             </tr>
         </tbody>

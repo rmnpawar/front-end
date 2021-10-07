@@ -21,6 +21,7 @@ import { SectionsComponent } from './Sections/sections/sections.component';
 import { AuthGuard } from './Service/auth-guard.service';
 import { SuppliersComponent } from './Supplier/suppliers/suppliers.component';
 import { LoginFormComponent } from './User/login-form/login-form.component';
+import { RepairHistoryComponent } from './Reports/repair-history/repair-history.component';
 
 
 const routes: Routes = [
@@ -44,7 +45,8 @@ const routes: Routes = [
   { path: 'all-assets', component: AssetsComponent, canActivate: [AuthGuard]},
   { path: 'assets-list', component: AssetListComponent, canActivate: [AuthGuard],
     children: [
-      { path: 'asset-history/:id', component: AssetHistoryComponent }
+      { path: 'asset-history/:id', component: AssetHistoryComponent },
+      { path: 'repair-history/:id', component: RepairHistoryComponent },
     ]},
 
   { path: 'requests', component: RequestViewComponent, canActivate: [AuthGuard] },

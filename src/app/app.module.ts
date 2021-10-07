@@ -55,6 +55,7 @@ import { ConsumableRequestIssueComponent } from './Request/consumable-request-is
 import { ConsumableHistoryComponent } from './Reports/consumable-history/consumable-history.component';
 import { AssetHistoryComponent } from './Reports/asset-history/asset-history.component';
 import { ModalComponent } from './ui/modal/modal.component';
+import { RepairHistoryComponent } from './Reports/repair-history/repair-history.component';
 
 
 
@@ -98,6 +99,7 @@ import { ModalComponent } from './ui/modal/modal.component';
     ConsumableHistoryComponent,
     AssetHistoryComponent,
     ModalComponent,
+    RepairHistoryComponent,
   ],
   imports: [
     BrowserModule,

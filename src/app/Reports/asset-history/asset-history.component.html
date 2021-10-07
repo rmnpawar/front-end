@@ -1,8 +1,32 @@
-<div class="content">
+<div class="container" *ngIf='assetHistory.length > 0; else noItems'>
+  <p class="lead">Asset ID: {{ id }}</p>
   <table class="table table-striped">
     <thead>
       <th>S.no.</th>
-      <th></th>
+      <th>Asset</th>
+      <th>User Name</th>
+      <th>Section</th>
+      <th>Date</th>
+      <th>Action</th>
     </thead>
+    <tbody>
+      <tr *ngFor='let history of assetHistory; index as i'>
+        <td>{{ i + 1 }}</td>
+        <td>{{ history.asset_name }}</td>
+        <td>{{ history.user_name }}</td>
+        <td>{{ history.section_name }}</td>
+        <td>{{ history.date }}</td>
+        <td>{{ history.action }}</td>
+      </tr>
+    </tbody>
   </table>
 </div>
+
+<ng-template #noItems>
+  <div class="container m-auto">
+    <p class="lead">No Items</p>
+  </div>
+</ng-template>
+
+
+

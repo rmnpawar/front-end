@@ -1,0 +1,20 @@
+<div class="container">
+  <p class="lead">Asset ID: {{ this.id }}</p>
+
+  <table class="table table-striped">
+    <thead>
+      <th>S.no</th>
+      <th>Repair Date</th>
+      <th>Description</th>
+      <th>Cost</th>
+    </thead>
+    <tbody>
+      <tr *ngFor='let history of repairHistory; index as i'>
+        <td>{{ i + 1 }}</td>
+        <td>{{ history.date }}</td>
+        <td>{{ history.description }}</td>
+        <td>{{ history.cost }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
