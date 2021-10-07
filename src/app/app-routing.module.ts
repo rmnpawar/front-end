@@ -14,6 +14,7 @@ import { InvoicesComponent } from './Invoice/invoices/invoices.component';
 import { ProcessComponent } from './Invoice/process/process.component';
 import { EditFormComponent } from './Products/edit-form/edit-form.component';
 import { ProductsComponent } from './Products/products/products.component';
+import { AssetHistoryComponent } from './Reports/asset-history/asset-history.component';
 import { ConsumableHistoryComponent } from './Reports/consumable-history/consumable-history.component';
 import { RequestViewComponent } from './Request/request-view/request-view.component';
 import { SectionsComponent } from './Sections/sections/sections.component';
@@ -41,7 +42,10 @@ const routes: Routes = [
   { path: 'invoices', component: InvoicesComponent, canActivate: [AuthGuard]},
   //{ path: 'requests', component: AdminViewComponent, canActivate: [AuthGuard]},
   { path: 'all-assets', component: AssetsComponent, canActivate: [AuthGuard]},
-  { path: 'assets-list', component: AssetListComponent, canActivate: [AuthGuard]},
+  { path: 'assets-list', component: AssetListComponent, canActivate: [AuthGuard],
+    children: [
+      { path: 'asset-history/:id', component: AssetHistoryComponent }
+    ]},
 
   { path: 'requests', component: RequestViewComponent, canActivate: [AuthGuard] },
 

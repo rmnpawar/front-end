@@ -30,4 +30,8 @@ export class AssetService {
   public approveIssue(request_id, asset_id) {
     return this.auth.http.Post(this.base_url + 'issue_against_request', {"asset_id": asset_id, "request_id": request_id});
   }
+
+  public assetHistory(id: number) {
+    return this.auth.http.Get(this.base_url + id + '/history');
+  }
 }

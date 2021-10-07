@@ -1,0 +1,40 @@
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: rgba($color: #000000, $alpha: 0.7);
+}
+
+.content {
+  position: absolute;
+  height: 60%;
+  width: 40%;
+  transform: translate(-50%, -50%);
+  top: 40%;
+  left: 50%;
+  border-radius: 10px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+
+  .projected-content {
+    overflow-y: scroll;
+    flex: 50 1 20px;
+  }
+
+  .actions {
+    // flex: 10 1 20px;
+    // position: absolute;
+    height: 80px;
+    padding: 20px;
+    width: 100%;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    border-top: .1px solid rgba($color: #000000, $alpha: 0.7);
+  }
+}
+
