@@ -16,4 +16,8 @@ export class ReportsService {
     let httpParameters = new HttpParams(parameters);
     return this.auth.Get(this.base_url + 'consumables/history', {params: httpParameters});
   }
+
+  getConsumableSummary() {
+    return this.auth.Get(this.base_url + 'consumables/summary');
+  }
 }

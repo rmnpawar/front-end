@@ -56,6 +56,7 @@ import { ConsumableHistoryComponent } from './Reports/consumable-history/consuma
 import { AssetHistoryComponent } from './Reports/asset-history/asset-history.component';
 import { ModalComponent } from './ui/modal/modal.component';
 import { RepairHistoryComponent } from './Reports/repair-history/repair-history.component';
+import { ConsumableSummaryComponent } from './Reports/consumable-summary/consumable-summary.component';
 
 
 
@@ -100,6 +101,7 @@ import { RepairHistoryComponent } from './Reports/repair-history/repair-history.
     AssetHistoryComponent,
     ModalComponent,
     RepairHistoryComponent,
+    ConsumableSummaryComponent,
   ],
   imports: [
     BrowserModule,

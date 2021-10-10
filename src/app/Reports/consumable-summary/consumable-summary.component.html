@@ -1,0 +1,16 @@
+<div class="container" *ngIf='consumables'>
+  <table class="table table-striped">
+    <thead>
+      <th>S.no</th>
+      <th>Consumable</th>
+      <th>Balance</th>
+    </thead>
+    <tbody>
+      <tr *ngFor='let consumable of consumables; index as i'>
+        <td>{{ i + 1 }}</td>
+        <td>{{ consumable.name }}</td>
+        <td>{{ consumable.balance }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -7,10 +7,10 @@ import { AuthenticationService } from './authentication.service';
 export class ProductService {
 
   products;
-  base_url = "http://localhost:8000/api/products";
+  base_url = "http://localhost:8000/api/products/";
 
-  constructor(private auth: AuthenticationService) { 
-    
+  constructor(private auth: AuthenticationService) {
+
   }
 
   async getProducts() {
@@ -26,6 +26,10 @@ export class ProductService {
         return product;
       }
     }
+  }
+
+  syncConsumables(product_id: number, consumables: number[]) {
+    return this.auth.http.Post(this.base_url + 'consumables/' + product_id, {"consumables": consumables});
   }
 
 }

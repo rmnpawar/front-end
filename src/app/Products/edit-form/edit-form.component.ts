@@ -64,6 +64,20 @@ export class EditFormComponent implements OnInit {
     this.transferConsumable(this.product.consumables, this.all_consumables, consumable);
   }
 
+  syncConsumables() {
+    let ids = this.extractId(this.product.consumables);
+
+    this.productService.syncConsumables(this.product.id, ids).subscribe(res => {
+      console.log(res);
+    })
+  }
+
+  extractId(consumables: any[]) {
+    return consumables.map(consumable => {
+      return consumable.id;
+    });
+  }
+
   transferConsumable(sourceArray: any[], destinationArray: any[], consumable) {
     destinationArray.push(consumable);
     sourceArray.splice(sourceArray.indexOf(consumable), 1);

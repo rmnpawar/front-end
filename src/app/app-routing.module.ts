@@ -22,6 +22,7 @@ import { AuthGuard } from './Service/auth-guard.service';
 import { SuppliersComponent } from './Supplier/suppliers/suppliers.component';
 import { LoginFormComponent } from './User/login-form/login-form.component';
 import { RepairHistoryComponent } from './Reports/repair-history/repair-history.component';
+import { ConsumableSummaryComponent } from './Reports/consumable-summary/consumable-summary.component';
 
 
 const routes: Routes = [
@@ -52,6 +53,8 @@ const routes: Routes = [
   { path: 'requests', component: RequestViewComponent, canActivate: [AuthGuard] },
 
   { path: 'reports', component: ConsumableHistoryComponent, canActivate: [AuthGuard], data: {animation: "Report"}},
+  { path: 'consumables/summary', component: ConsumableSummaryComponent, canActivate: [AuthGuard], data: {animation: "Summary"}},
+
 ];
 
 @NgModule({
