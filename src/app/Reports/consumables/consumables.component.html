@@ -1,0 +1,22 @@
+<div class="container" *ngIf='consumables'>
+  <table class="table table-striped">
+    <thead>
+      <th>S.no</th>
+      <th>Consumable</th>
+      <th>Product</th>
+      <th>Invoice</th>
+      <th>Price</th>
+      <th>Balance</th>
+    </thead>
+    <tbody>
+      <tr *ngFor='let consumable of consumables; index as i'>
+        <td>{{ i + 1 }}</td>
+        <td>{{ consumable.sub_category }}</td>
+        <td>{{ consumable.brand + "  " + consumable.model }}</td>
+        <td>{{ consumable.invoice_number + " " + consumable.invoice_date }}</td>
+        <td>{{ consumable.price }}</td>
+        <td>{{ consumable.balance }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

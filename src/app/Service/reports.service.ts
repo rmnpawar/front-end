@@ -20,4 +20,8 @@ export class ReportsService {
   getConsumableSummary() {
     return this.auth.Get(this.base_url + 'consumables/summary');
   }
+
+  getConsumables() {
+    return this.auth.Get(this.base_url + 'consumables');
+  }
 }
