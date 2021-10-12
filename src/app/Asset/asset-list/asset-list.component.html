@@ -21,7 +21,7 @@
               <td>{{ asset.asset_id }}</td>
               <td>{{ asset.serial_no }}</td>
               <td>{{ asset.invoice_details }}</td>
-              <td>{{ asset.item_price }}</td>
+              <td>{{ asset.price }}</td>
               <td>{{ asset.product_name }}</td>
               <td *ngIf="asset.user_name; else inStock">{{ asset.user_name + " " + asset.section_name }}</td>
               <ng-template #inStock>
