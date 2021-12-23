@@ -8,7 +8,7 @@ import { AuthorizedHttpService } from '../authorized-http.service';
   providedIn: 'root'
 })
 export class AuthenticationService {
-  base_url: string = 'http://localhost:8000/api/user';
+  base_url: string = 'user';
   
   user = null;
   isAuthenticated: Boolean = false;

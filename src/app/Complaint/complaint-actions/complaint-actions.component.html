@@ -1,0 +1,19 @@
+<div class="container">
+    <p class="lead">Actions</p>
+    <p class="lead">ID: {{ id }}</p>
+
+    <table class="table table-striped">
+        <thead>
+            <th>S.no.</th>
+            <th>Actions</th>
+            <th>Date</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let action of actions; index as i">
+                <td>{{ i + 1 }}</td>
+                <td>{{ action.action }}</td>
+                <td>{{ action.created_on }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

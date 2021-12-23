@@ -58,8 +58,12 @@ import { ModalComponent } from './ui/modal/modal.component';
 import { RepairHistoryComponent } from './Reports/repair-history/repair-history.component';
 import { ConsumableSummaryComponent } from './Reports/consumable-summary/consumable-summary.component';
 import { ConsumablesComponent } from './Reports/consumables/consumables.component';
+import { CreateComplaintComponent } from './Complaint/create-complaint/create-complaint.component';
 
-
+import { CustomTableModule } from './CustomTable/CustomTable.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ComplaintsComponent } from './Complaint/complaints/complaints.component';
+import { ComplaintActionsComponent } from './Complaint/complaint-actions/complaint-actions.component';
 
 
 @NgModule({
@@ -104,6 +108,9 @@ import { ConsumablesComponent } from './Reports/consumables/consumables.componen
     RepairHistoryComponent,
     ConsumableSummaryComponent,
     ConsumablesComponent,
+    CreateComplaintComponent,
+    ComplaintsComponent,
+    ComplaintActionsComponent,
   ],
   imports: [
     BrowserModule,
@@ -111,7 +118,11 @@ import { ConsumablesComponent } from './Reports/consumables/consumables.componen
     AppRoutingModule,
     HttpClientModule,
 
-    FormsModule
+    FormsModule,
+
+    CustomTableModule,
+
+    FontAwesomeModule,
   ],
   providers: [
     AuthenticationService,

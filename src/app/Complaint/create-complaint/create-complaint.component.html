@@ -1,0 +1,17 @@
+<div class="container">
+    <p class="lead">Register a complaint</p>
+    <form (ngSubmit)="createComplaint(form.value)" #form="ngForm">
+        <div class="form-group">
+            <label for="asset_id">Asset</label>
+            <select name="asset_id" class="form-control" ngModel>
+                <option selected disabled>Please select an option</option>
+                <option *ngFor="let asset of assets; index as i" value="{{ i }}">{{ asset.brand_name +  '  '  + asset.products.model + '  ' + asset.asset_id }}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="description">Complaint description</label>
+            <textarea name="description" id="description" cols="30" rows="10" class="form-control" ngModel></textarea>
+        </div>
+        <input type="submit" value="Create" class="btn btn-primary">
+    </form>
+</div>

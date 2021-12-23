@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { AuthenticationService } from './Service/authentication.service';
 import { Observable } from 'rxjs';
 import { CustomOptions } from './Models/customoptions';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ export class AuthorizedHttpService {
 
   options: CustomOptions = {};
   token: string;
+  base_url = environment.base_url;
 
 
   constructor(public http: HttpClient) {}
@@ -38,13 +40,13 @@ export class AuthorizedHttpService {
       this.setupHeaders(options.headers);
     }
 
-    return this.http.get<T>(endPoint, this.options);
+    return this.http.get<T>(this.base_url + endPoint, this.options);
   }
 
 
   public Post<T>(endPoint: string, params: Object) : Observable<T> {
     // this.setup();
-    return this.http.post<T>(endPoint, params, this.options);
+    return this.http.post<T>(this.base_url + endPoint, params, this.options);
   }
 
 

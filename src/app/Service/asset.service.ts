@@ -1,41 +1,41 @@
 import { Injectable } from '@angular/core';
-import { AuthenticationService } from './authentication.service';
+import { AuthorizedHttpService } from '../authorized-http.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AssetService {
 
-  private base_url = "http://localhost:8000/api/assets/"
+  private base_url = "assets/"
 
-  constructor(private auth: AuthenticationService) { }
+  constructor(private http: AuthorizedHttpService) { }
 
   async getUserAssets() {
-    return await this.auth.http.Get(this.base_url).toPromise();
+    return await this.http.Get(this.base_url).toPromise();
   }
 
   async getAllAssets() {
-    return await this.auth.http.Get(this.base_url).toPromise();
+    return await this.http.Get(this.base_url).toPromise();
   }
 
   async getCurrentAssets() {
-    return await this.auth.http.Get("http://localhost:8000/api/assets/list").toPromise();
+    return await this.http.Get(this.base_url + "list").toPromise();
   }
 
   public assetInCategory(id: number) {
     console.log(id);
-    return this.auth.http.Get(this.base_url + `in_category/${id}`);
+    return this.http.Get(this.base_url + `in_category/${id}`);
   }
 
   public approveIssue(request_id, asset_id) {
-    return this.auth.http.Post(this.base_url + 'issue_against_request', {"asset_id": asset_id, "request_id": request_id});
+    return this.http.Post(this.base_url + 'issue_against_request', {"asset_id": asset_id, "request_id": request_id});
   }
 
   public assetHistory(id: number) {
-    return this.auth.http.Get(this.base_url + id + '/history');
+    return this.http.Get(this.base_url + id + '/history');
   }
 
   public repairHistory(id: number) {
-    return this.auth.http.Get(this.base_url + id + '/repairs');
+    return this.http.Get(this.base_url + id + '/repairs');
   }
 }

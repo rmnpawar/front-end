@@ -1,0 +1,40 @@
+<div class="container">
+    <p class="lead">All complaints</p>
+    <div class="content">
+        <table class="table table-striped">
+            <thead>
+                <th>S.no</th>
+                <th>User name</th>
+                <th>Section Name</th>
+                <th>Description</th>
+                <th>Asset</th>
+                <th>Status</th>
+                <th>Created At</th>
+                <th>Actions</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let complaint of complaints; index as i">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ complaint.user_name }}</td>
+                    <td>{{ complaint.section_name }}</td>
+                    <td>{{ complaint.description }}</td>
+                    <td>{{ complaint.asset }}</td>
+                    <td>{{ complaint.status }}</td>
+                    <td>{{ complaint.created_at }}</td>
+                    <td>
+                        <button title="Close complaint" class="btn" (click)="closeComplaint(complaint.id)">
+                            <span><i class="fa fa-window-close" aria-hidden="true"></i></span>
+                        </button>
+                        <button title="Add Action" class="btn" (click)="openDialog('actions', complaint.id)">
+                            <span><i class="fa fa-window-close" aria-hidden="true"></i></span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<app-modal *ngIf="showModal" (closed)="showModal=false">
+    <router-outlet></router-outlet>
+</app-modal>

@@ -1,0 +1,18 @@
+* {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.caret {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  border: 5px solid transparent;
+  border-top-color: #a9a9a9;;
+}
+
+.form-control {
+  position: absolute;
+  width: 100px;
+  transition: all 0.5s linear;
+}
+

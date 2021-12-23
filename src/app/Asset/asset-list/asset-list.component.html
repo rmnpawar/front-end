@@ -1,5 +1,5 @@
-<div class="m-4">
-    <table class="table">
+<div class="m-4" *ngIf="assets">
+  <!-- <table class="table">
         <thead>
             <th>S.no</th>
             <th>Category</th>
@@ -34,7 +34,23 @@
               </td>
             </tr>
         </tbody>
-    </table>
+    </table> -->
+  <a-table [cols]="columns" [data]="assets" [pageSize]="10" [actions]="true" class="md-10">
+    <ng-template [template-header]="'header'" let-columns>
+    </ng-template>
+
+    <ng-template [template-header]="'body'" let-rowData>
+      <td *ngFor="let col of rowData.columns">
+        {{ rowData.data[col.fieldName] }}
+      </td>
+    </ng-template>
+    <ng-template [header]="'actions'" let-item>
+      <td>
+        <button title="Asset history" class="btn" (click)="open('asset-history', item.id)"><i class="fas fa-history"></i></button>
+        <button title="Repair history" class="btn" (click)="open('repair-history', item.id)"><i class="fas fa-file-medical"></i></button>
+      </td>
+    </ng-template>
+  </a-table>
 </div>
 
 <app-modal *ngIf="showModal" (closed)="showModal=false">

@@ -24,6 +24,10 @@ import { LoginFormComponent } from './User/login-form/login-form.component';
 import { RepairHistoryComponent } from './Reports/repair-history/repair-history.component';
 import { ConsumableSummaryComponent } from './Reports/consumable-summary/consumable-summary.component';
 import { ConsumablesComponent } from './Reports/consumables/consumables.component';
+import { CreateComplaintComponent } from './Complaint/create-complaint/create-complaint.component';
+import { AppComponent } from './CustomTable/app.component';
+import { ComplaintsComponent } from './Complaint/complaints/complaints.component';
+import { ComplaintActionsComponent } from './Complaint/complaint-actions/complaint-actions.component';
 
 
 const routes: Routes = [
@@ -56,7 +60,16 @@ const routes: Routes = [
   { path: 'reports', component: ConsumableHistoryComponent, canActivate: [AuthGuard], data: {animation: "Report"}},
   { path: 'consumables/summary', component: ConsumableSummaryComponent, canActivate: [AuthGuard], data: {animation: "Summary"}},
   { path: 'consumables', component: ConsumablesComponent, canActivate: [AuthGuard], data: {animation: "Consumables"}},
+  
+  { path: 'complaints/create', component: CreateComplaintComponent, canActivate: [AuthGuard], data: {animation: "Consumables"}},
+  { path: 'complaints', component: ComplaintsComponent, canActivate: [AuthGuard], data: {animation: "Consumables"}, 
+    children: [
+      {path: 'actions/:id', component: ComplaintActionsComponent}
+    ]
+  },
 
+  {path: 'table', component: AppComponent},
+  
 ];
 
 @NgModule({

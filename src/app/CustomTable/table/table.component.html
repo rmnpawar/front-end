@@ -1,0 +1,84 @@
+<!-- <div class="table-container" [ngStyle]='tableHeight'>
+  <div class="table" >
+    <ng-container *ngFor='let tp of templates; index as t'>
+      <ng-container [ngSwitch]='tp.templateName'>
+        <ng-container *ngSwitchCase='TEMPLATE.header'>
+          <div class="table-column">
+            <div class="column">No.</div>
+            <ng-container *ngTemplateOutlet='tp.template; context: {$implicit: cols}'></ng-container>
+          </div>
+        </ng-container>
+        <ng-container *ngSwitchCase='TEMPLATE.body'>
+          <div class="table-column" *ngFor="let item of items; index as i">
+            <div class="cell">{{ i + 1 + pageData.start }}</div>
+            <ng-container *ngTemplateOutlet='tp.template; context: {$implicit: { data: item, index: i, columns: cols}}'>
+            </ng-container>
+            <ng-container *ngTemplateOutlet='actions.first.template; context: {$implicit: item}'></ng-container>
+          </div>
+        </ng-container>
+        <ng-container *ngSwitchDefault>
+          Please Provide correct templates.
+        </ng-container>
+      </ng-container>
+    </ng-container>
+  </div>
+  <div class="actions">
+    <div class="current">
+      {{ pageData.start + 1 }}<span class="separator">-</span>{{ pageData.end }} of {{ size }}
+    </div>
+    <button (click)="prev()" class="left">
+      <fa-icon [icon]='faChevronLeft'></fa-icon>
+    </button>
+    <button (click)="next()" class="right">
+      <fa-icon [icon]='faChevronRight'></fa-icon>
+    </button>
+  </div>
+</div> -->
+
+
+<div class="table-container" [ngStyle]='tableHeight'>
+  <table class="table">
+    <ng-container *ngFor='let tp of templates; index as t'>
+      <ng-container [ngSwitch]='tp.templateName'>
+        <ng-container *ngSwitchCase='TEMPLATE.header'>
+          <thead>
+            <th>No.</th>
+            <th *ngFor='let col of cols'>
+              <table-header [column]='col' (filter)="filter($event)"></table-header>
+            </th>
+            <ng-container *ngTemplateOutlet='tp.template; context: {$implicit: cols}'></ng-container>
+            <th *ngIf="actions">Actions</th>
+          </thead>
+        </ng-container>
+        <tbody>
+          <ng-container *ngSwitchCase='TEMPLATE.body'>
+            <tr *ngFor="let item of items; index as i">
+              <td>{{ i + 1 + pageData.start }}</td>
+              <ng-container
+                *ngTemplateOutlet='tp.template; context: {$implicit: { data: item, index: i, columns: cols}}'>
+              </ng-container>
+              <ng-container *ngIf="actions">
+                <ng-container *ngTemplateOutlet='actionTemplates.first.template; context: {$implicit: item}'>
+                </ng-container>
+              </ng-container>
+            </tr>
+          </ng-container>
+        </tbody>
+        <ng-container *ngSwitchDefault>
+          Please Provide correct templates.
+        </ng-container>
+      </ng-container>
+    </ng-container>
+  </table>
+  <div class="actions">
+    <div class="current">
+      {{ pageData.start + 1 }}<span class="separator">-</span>{{ pageData.end }} of {{ size }}
+    </div>
+    <button (click)="prev()" class="left">
+      <fa-icon [icon]='faChevronLeft'></fa-icon>
+    </button>
+    <button (click)="next()" class="right">
+      <fa-icon [icon]='faChevronRight'></fa-icon>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,4 @@
+<div (click)="open()">{{ column.colName }}   <span class="caret"></span></div>
+<div *ngIf='displayField'>
+  <input type="text" [(ngModel)]="inputText" #input (keyup)='valueChanged(input.value)' class="form-control">
+</div>

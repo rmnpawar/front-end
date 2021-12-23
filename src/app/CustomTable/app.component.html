@@ -1,0 +1,28 @@
+<div class="container">
+  <a-table (filter)='log($event)'
+  [cols]="cols"
+  [data]="data"
+  [pageSize]="5"
+  [actions]="false"
+  style="display: inline-block; width: 100%;"
+  >
+  <ng-template [template-header]="'header'" let-columns>
+    <th *ngFor='let col of columns'>
+    <table-header [column]='col'></table-header>
+      <!-- {{ col.colName }} -->
+    </th>
+  </ng-template>
+    <ng-template [template-header]="'body'" let-rowData>    
+    <td *ngFor='let col of rowData.columns'>
+      {{ rowData.data[col.fieldName] }}
+    </td>
+  </ng-template>
+  <ng-template [header]="'actions'" let-item>
+    <td>
+      {{ item.action }}
+    </td>
+  </ng-template>
+
+
+</a-table>
+</div>
